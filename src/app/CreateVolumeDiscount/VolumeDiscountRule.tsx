@@ -14,7 +14,7 @@ const VolumeDiscountRule = () => {
                 </Text>
                 {listVolumeDiscountRules.map((item, index) =>
                     <div key={index}>
-                        <FormAddVolumeDiscountRule data={item} />
+                        <FormAddVolumeDiscountRule data={item} index={index+1} />
                     </div>
 
                 )}
@@ -34,7 +34,7 @@ const VolumeDiscountRule = () => {
     )
 }
 
-const FormAddVolumeDiscountRule = ({ data }: { data: VolumeDiscountRule }) => {
+const FormAddVolumeDiscountRule = ({ data, index }: { data: VolumeDiscountRule, index: number }) => {
     const { register, errors, control, removeVolumeDiscountRules, updateDiscountRule } = useCreateVolumeDiscount();
     const options = [
         { label: 'None', value: 'None' },
@@ -45,7 +45,7 @@ const FormAddVolumeDiscountRule = ({ data }: { data: VolumeDiscountRule }) => {
         <div className="mb-7">
             <div style={{ position: "relative" }}>
                 <Divider borderColor="border" />
-                <div style={{ backgroundColor: "#ec4d2e", color: "#fff", width: "100px", padding: "6px", borderRadius: "1px 1px 12px 1px" }}>OPTION 1</div>
+                <div style={{ backgroundColor: "#ec4d2e", color: "#fff", width: "100px", padding: "6px", borderRadius: "1px 1px 12px 1px" }}>OPTION {index}</div>
                 <div className="flex justify-end px-[50px]">
                     <div style={{ fontSize: "32px", cursor: "pointer" }} onClick={() => { removeVolumeDiscountRules(data.Id) }}>
                         <Icon source={DeleteIcon} />
